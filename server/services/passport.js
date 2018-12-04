@@ -13,7 +13,7 @@ const jwtOptions = {
 // Create JWT strategy
 const jwtLogin = new JwtStrategy(jwtOptions, function(payload, done){
     // See if the user ID in the payload exists in our database
-    User.findById(payload.subdomains, function(err, user){
+    User.findById(payload.sub, function(err, user){
         if(err) {return done(err, false);}
         // if it does. call done with that user
         if(user){
