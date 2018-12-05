@@ -33,3 +33,11 @@ exports.signup = function(req,res,next){
         })
     })
 }
+
+exports.signin = function(req, res, next){
+    // User has already had their email authenticated
+    // We just need to give them their token
+
+    // passport attaches the current auth'd user to req.user
+    res.send({token: tokenForUser(req.user)})
+}
