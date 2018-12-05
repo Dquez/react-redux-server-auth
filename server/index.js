@@ -7,11 +7,15 @@ const router = require('./router');
 const mongoose = require('mongoose');
 
 // DB setup
-mongoose.connect("mongodb://localhost:auth/auth", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost:auth/auth", {
+    useNewUrlParser: true
+});
 
 // app setup
 app.use(morgan('combined'));
-app.use(bodyParser.json({type: '*/*'}));
+app.use(bodyParser.json({
+    type: '*/*'
+}));
 
 router(app);
 
