@@ -1,7 +1,10 @@
 const Authentication = require('./controllers/authentication');
-const passportService = require('./services/passport');
+require('./services/passport');
 const passport = require('passport');
-
+// console.log(Authentication.signup({body: {
+//      email: 'dariell@yahoo',
+//      password: '123'
+// }}));
 // middleware for each request at a specific route, session: false is because the default behavior is to treat the session as a cookie-based session
 const requireAuth = passport.authenticate('jwt', {
      session: false

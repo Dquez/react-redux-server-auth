@@ -13,10 +13,9 @@ function tokenForUser(user) {
 }
 
 exports.signup = function (req, res, next) {
-
     const email = req.body.email;
     const password = req.body.password;
-    console.log(email, password);
+    console.log(email,password);
     if (!email || !password) {
         res.status(422).send({
             error: 'You must provide a password and email'
