@@ -1,10 +1,11 @@
 const Authentication = require('./controllers/authentication');
 require('./services/passport');
 const passport = require('passport');
-// console.log(Authentication.signup({body: {
-//      email: 'dariell@yahoo',
-//      password: '123'
-// }}));
+
+// cors setup
+const cors = require('cors');
+const corsOptions = require('./index').corsOptions
+
 // middleware for each request at a specific route, session: false is because the default behavior is to treat the session as a cookie-based session
 const requireAuth = passport.authenticate('jwt', {
      session: false
@@ -19,6 +20,6 @@ module.exports = function (app) {
                hi: 'there'
           });
      })
-     app.post('/signup', Authentication.signup);
-     app.post('/signin', requireSignin, Authentication.signin);
+     app.post('/signup', cors(corsOptions), Authentication.signup);
+     app.post('/signin', cors(corsOptions), requireSignin, Authentication.signin);
 }

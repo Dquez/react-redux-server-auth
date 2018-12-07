@@ -7,6 +7,12 @@ const router = require('./router');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
+// Cors setup
+exports.corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
+}
+
 // DB setup
 mongoose.connect("mongodb://localhost:auth/auth", {
     useNewUrlParser: true
