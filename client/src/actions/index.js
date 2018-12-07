@@ -20,3 +20,16 @@ export const signout = () => {
         payload: ''
     }
 }
+
+export const signin = (formProps, callback) => async dispatch =>{
+    try{
+        const repsonse = await axios.post('http://localhost:3090/signin', formProps);
+        const {token} = repsonse.data;
+        dispatch({type: AUTH_USER, payload: token})
+        localStorage.setItem('token', token)
+        callback();
+    }
+    catch(err){
+        dispatch({type: AUTH_ERROR, payload: 'Incorrect password'})
+    }
+}
